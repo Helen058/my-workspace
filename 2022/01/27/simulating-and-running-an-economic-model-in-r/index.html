@@ -1,0 +1,1053 @@
+<!DOCTYPE HTML>
+<html lang="en-UK">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="Simulating and Running an Economic Model in R, Workspace">
+    <meta name="description" content="Stay curious">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+<script async src="https://www.googletagmanager.com/gtag/js?id="></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+    gtag('config', '');
+</script>
+
+
+    <title>Simulating and Running an Economic Model in R | My Workspace</title>
+    <link rel="icon" type="image/png" href="/stamp3.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="My Workspace" type="application/atom+xml">
+</head>
+
+
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/stamp-white.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">My Workspace</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>Home</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>Tags</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>Categories</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>Archive</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle-o" style="zoom: 0.6;"></i>
+      
+      <span>About</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>Links</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="Search" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/stamp-white.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">My Workspace</div>
+        <div class="logo-desc">
+            
+            Stay curious
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			Home
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			Tags
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			Categories
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			Archive
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle-o"></i>
+			
+			About
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			Links
+		</a>
+          
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/23.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">Simulating and Running an Economic Model in R</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/R/">
+                                <span class="chip bg-color">R</span>
+                            </a>
+                        
+                            <a href="/tags/Econometrics/">
+                                <span class="chip bg-color">Econometrics</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/Economics/" class="post-category">
+                                Economics
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
+                    2022-01-27
+                </div>
+                
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>Update Date:&nbsp;&nbsp;
+                    2022-01-27
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
+                    1.7k
+                </div>
+                
+
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>Read Count:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        <link rel="stylesheet" href="/libs/prism/prism.css">
+        <!-- 代码块折行 -->
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <p>#Load library<br>install.packages(sfcr)<br>library(sfcr)<br>library(tidyverse)</p>
+<p>#Given below Canada’s interprovincial trade model<br>rm(list = Is())<br>reg_eqs &lt;- sfcr_set(</p>
+<p>  Y_AB ~ C_AB + G_AB + EQZ_AB + X_AB - M_AB,<br>  Y_ON ~ C_ON + G_ON + EQZ_ON + X_ON - M_ON,<br>  Y_QC ~ C_QC + G_QC + EQZ_QC + X_QC - M_QC,<br>  Y ~ Y_AB + Y_ON + Y_QC,</p>
+<p>  M_AB_ON ~ mu_AB_ON * Y_AB,<br>  M_AB_QC ~ mu_AB_QC * Y_AB,<br>  M_AB ~ M_AB_ON + M_AB_QC,</p>
+<p>  M_ON_AB ~ mu_ON_AB * Y_ON,<br>  M_ON_QC ~ mu_ON_QC * Y_ON,<br>  M_ON ~ M_ON_AB + M_ON_QC,</p>
+<p>  M_QC_AB ~ mu_QC_AB * Y_QC,<br>  M_QC_ON ~ mu_QC_ON * Y_QC,<br>  M_QC ~ M_QC_ON + M_QC_AB,</p>
+<p>  X_AB_ON ~ M_ON_AB,<br>  X_AB_QC ~ M_QC_AB,<br>  X_AB ~ X_AB_ON + X_AB_QC,</p>
+<p>  X_ON_AB ~ M_AB_ON,<br>  X_ON_QC ~ M_QC_ON,<br>  X_ON ~ X_ON_AB + X_ON_QC,</p>
+<p>  X_QC_AB ~ M_AB_QC,<br>  X_QC_ON ~ M_ON_QC,<br>  X_QC ~ X_QC_AB + X_QC_ON,</p>
+<p>  YD_AB ~ Y_AB - TX_AB + r[-1] * Bh_AB[-1],<br>  YD_ON ~ Y_ON - TX_ON + r[-1] * Bh_ON[-1],<br>  YD_QC ~ Y_QC - TX_QC + r[-1] * Bh_QC[-1],</p>
+<p>  TX_AB ~ theta * ( Y_AB + r[-1] * Bh_AB[-1] ),<br>  TX_ON ~ theta * ( Y_ON + r[-1] * Bh_ON[-1] ),<br>  TX_QC ~ theta * ( Y_QC + r[-1] * Bh_QC[-1] ),</p>
+<p>  V_AB ~ V_AB[-1] + ( YD_AB - C_AB ),<br>  V_ON ~ V_ON[-1] + ( YD_ON - C_ON ),<br>  V_QC ~ V_QC[-1] + ( YD_QC - C_QC ),</p>
+<p>  C_AB ~ alpha1_AB * YD_AB + alpha2_AB * V_AB[-1],<br>  C_ON ~ alpha1_ON * YD_ON + alpha2_ON * V_ON[-1],<br>  C_QC ~ alpha1_QC * YD_QC + alpha2_QC * V_QC[-1],</p>
+<p>  Hh_AB ~ V_AB - Bh_AB,<br>  Hh_ON ~ V_ON - Bh_ON,<br>  Hh_QC ~ V_QC - Bh_QC,</p>
+<p>  Bh_AB ~ V_AB * ( lambda0_AB + lambda1_AB * r - lambda2_AB * ( YD_AB/V_AB ) ),<br>  Bh_ON ~ V_ON * ( lambda0_ON + lambda1_ON * r - lambda2_ON * ( YD_ON/V_ON ) ),<br>  Bh_QC ~ V_QC * ( lambda0_QC + lambda1_QC * r - lambda2_QC * ( YD_QC/V_QC ) ),</p>
+<p>  TX ~ TX_AB + TX_ON + TX_QC,<br>  G ~ G_AB + G_ON + G_QC,<br>  Bh ~ Bh_AB + Bh_ON + Bh_QC,<br>  Hh ~ Hh_AB + Hh_ON + Hh_QC,</p>
+<p>  Bs ~ Bs[-1] + ( G + EQZ_CA + r[-1] * Bs[-1] ) - ( TX + r[-1] * Bcb[-1] ),<br>  Hs ~ Hs[-1] + Bcb - Bcb[-1],<br>  Bcb ~ Bs - Bh,</p>
+<p>  AVGY ~ Y/3,</p>
+<p>  zeta_AB ~ if ( Y_AB[-1]-AVGY[-1] &lt;0 ) {1} else {0},<br>  zeta_ON ~ if ( Y_ON[-1]-AVGY[-1] &lt;0 ) {1} else {0},<br>  zeta_QC ~ if ( Y_QC[-1]-AVGY[-1] &lt;0 ) {1} else {0},</p>
+<p>  EQZ_AB ~ -zeta_AB<em>rho_eqz</em>(Y_AB[-1]-AVGY[-1]),<br>  EQZ_ON ~ -zeta_ON<em>rho_eqz</em>(Y_ON[-1]-AVGY[-1]),<br>  EQZ_QC ~ -zeta_QC<em>rho_eqz</em>(Y_QC[-1]-AVGY[-1]),<br>  EQZ_CA ~ EQZ_AB + EQZ_ON + EQZ_QC,</p>
+<p>  redondant ~ Hs - Hh<br>)</p>
+<p>reg_ext &lt;- sfcr_set(<br>  r ~ 0.025,</p>
+<p>  G_AB ~ 30,<br>  G_ON ~ 30,<br>  G_QC ~ 30,<br>  rho_eqz ~ 0,</p>
+<p>  mu_AB_ON ~ 0.1,<br>  mu_AB_QC ~ 0.1,</p>
+<p>  mu_ON_AB ~ 0.1,<br>  mu_ON_QC ~ 0.1,</p>
+<p>  mu_QC_AB ~ 0.1,<br>  mu_QC_ON ~ 0.1,</p>
+<p>  alpha1_AB ~ 0.70,<br>  alpha1_ON ~ 0.70,<br>  alpha1_QC ~ 0.70,</p>
+<p>  alpha2_AB ~ 0.30,<br>  alpha2_ON ~ 0.30,<br>  alpha2_QC ~ 0.30,</p>
+<p>  lambda0_AB ~ 0.7,<br>  lambda0_ON ~ 0.7,<br>  lambda0_QC ~ 0.7,</p>
+<p>  lambda1_AB ~ 0.08,<br>  lambda1_ON ~ 0.08,<br>  lambda1_QC ~ 0.08,</p>
+<p>  lambda2_AB ~ 0.01,<br>  lambda2_ON ~ 0.01,<br>  lambda2_QC ~ 0.01,</p>
+<p>  theta ~ 0.25<br>)</p>
+<p>#To simulate the above model 100 times</p>
+<p>nsimul=100<br>reg=sfcr_baseline(<br>  equations=reg_eqs,<br>  external=reg_ext,<br>  periods=nsimul,<br>  method = “Broyden”)</p>
+<h2 id="above-regression-in-short-term-reg-sfcr-baseline-reg-eqs-reg-ext-nsimul"><a href="#above-regression-in-short-term-reg-sfcr-baseline-reg-eqs-reg-ext-nsimul" class="headerlink" title="above regression in short term: reg=sfcr_baseline(reg_eqs, reg_ext, nsimul)"></a>above regression in short term: reg=sfcr_baseline(reg_eqs, reg_ext, nsimul)</h2><p>#To find each the consumption level of ON, QC, and AB at stationary state<br>cat(‘C_AB at stationary state=’,reg$C_AB[nsimul])<br>##C_AB at stationary state = 94.92669<br>cat(‘C_ON at stationary state=’,reg$C_ON[nsimul])<br>##C_ON at stationary state = 94.92669<br>cat(‘C_QC at stationary state=’,reg$C_QC[nsimul])<br>##C_QC at stationary state = 94.92669</p>
+<p>#b)<br>#To find Canada’s GDP at stationary state<br>cat(‘national GDP at stationary state=’,reg$Y[nsimul])<br>##national GDP at stationary state = 374.7801</p>
+<p>#c)</p>
+<h1 id="Assume-that-the-propensity-mu-of-Quebec-and-Ontario-to-import-goods-and-services-by-from-Alberta-increases-from-0-1-to-0-125-as-federal-government-spending-in-Ontario-increases-from-30-to-35-and-that-federal-government-spending-in-Quebec-and-Alberta-drop-from-30-to-27-5"><a href="#Assume-that-the-propensity-mu-of-Quebec-and-Ontario-to-import-goods-and-services-by-from-Alberta-increases-from-0-1-to-0-125-as-federal-government-spending-in-Ontario-increases-from-30-to-35-and-that-federal-government-spending-in-Quebec-and-Alberta-drop-from-30-to-27-5" class="headerlink" title="Assume that the propensity (mu) of Quebec and Ontario to import goods and services by from Alberta increases from 0.1 to 0.125, as federal government spending in Ontario increases from 30 to 35, and that federal government spending in Quebec and Alberta drop from 30 to 27.5"></a>Assume that the propensity (mu) of Quebec and Ontario to import goods and services by from Alberta increases from 0.1 to 0.125, as federal government spending in Ontario increases from 30 to 35, and that federal government spending in Quebec and Alberta drop from 30 to 27.5</h1><p>##Create shock using start=3 and end=100<br>shkmu=sfcr_shock(<br>variables=sfcr_set(<br>  mu_ON_AB<del>0.125,<br>  mu_QC_AB</del>0.125,<br>  G_ON<del>35,<br>  G_AB</del>27.5,<br>  G_QC~27.5<br>  ),<br>  start = 3,<br>  end = 100<br>)<br>reg_shkmu=sfcr_scenario(baseline=reg,scenario=shkmu,periods = 100)</p>
+<p>##Recall that we have already simulated the model 100 times at the beginning. Now calculate the % change between the provincial GDP at the initial stationary state and the new stationary state (after shock)<br>init_Y_AB=reg$Y_AB[nsimul]<br>init_Y_ON=reg$Y_ON[nsimul]<br>init_Y_QC=reg$Y_QC[nsimul]<br>new_Y_AB=reg_shkmu$Y_AB[nsimul]<br>new_Y_ON=reg_shkmu$Y_ON[nsimul]<br>new_Y_QC=reg_shkmu$Y_QC[nsimul]<br>cat(‘percent_change_AB=’,(new_Y_AB-init_Y_AB)/init_Y_AB<em>100)<br>##percent_change_AB= 5.306341<br>cat(‘percent_change_ON=’,(new_Y_ON-init_Y_ON)/init_Y_ON</em>100)<br>##percent_change_ON= 2.658365<br>cat(‘percent_change_QC=’,(new_Y_QC-init_Y_QC)/init_Y_QC*100)<br>##percent_change_QC= -7.964688</p>
+<p>#Based on your answer to c), which province saw its GDP increase the most compared to<br>#in the initial steady state? How do you explain this result, given the increase in spending by the<br>#federal government in Ontario and lower spending in Quebec and Alberta?</p>
+<p>#d)Alberta sees its GDP increase the most. Given that Alberta and Quebec lower government spending by 2.5 while Ontario increase government spending by 5. Because both Ontario and Quebec are increasing their imports from Alberta simultaneously; in other words, Alberta has a higher exportation without increasing its imports from other provinces.So when other condition remains the same, the GDP of Ontario and Quebec tend to be lower According to this equation: Y ~ C + G + EQZ + X - M</p>
+<p>#e)Calculate the percentage change between Canada’s GDP at the initial steady state that you got in b) and the GDP at the new steady state. How do you explain this result?<br>cat(‘Y difference btw initial and new steady state=’,reg_shkmu$Y[nsimul]-reg$Y[nsimul])<br>#Y difference btw initial and new steady state= 2.335871e-05<br>cat(‘Y percent change btw initial and new steady state=’,(reg_shkmu$Y[nsimul]-reg$Y[nsimul])/reg$Y[nsimul]*100)<br>#Y percent change btw initial and new steady state= 6.232644e-06<br>#Canada’s GDP in new steady state is slightly higher than in the initial state. Given the equation Y=Y_AB+Y_ON+Y_QC, and in c) we know that Y_AB increases 5.306341%, Y_ON increases 2.658365% while Y_QC decreases -7.964688%. The % increase in Y_AB and Y_ON almost overcome the % decrease in Y_QC. Therefore, Canada’s GDP at initial steady state is very close to that in new steady state. The % change between them is minor. </p>
+<p>#f)The federal government’s equalization program compensates provinces whose provincial GDP is lower than the average GDP of the Canadian provinces. The eqz (rho_eqz) parameter determines the generosity of the equalization program. So far, the basic calibration assumes that the program equalization does not compensate the poorer provinces, since eqz = 0.<br>#Given the new steady state obtained in c), identify the province (s) that would be eligible to receive an equalization payment!<br>cat(‘diff_AB_Average=’,reg_shkmu$Y_AB[nsimul]-(reg_shkmu$Y[nsimul]/3))<br>#diff_AB_Average= 6.629029<br>cat(‘diff_ON_Average=’,reg_shkmu$Y_ON[nsimul]-(reg_shkmu$Y[nsimul]/3))<br>#diff_ON_Average= 3.321<br>cat(‘diff_QC_Average=’,reg_shkmu$Y_QC[nsimul]-(reg_shkmu$Y[nsimul]/3))<br>#diff_QC_Average= -9.950029<br>#Quebec would be eligible to receive an equalization payement, because its GDP is lower than the average GDP of the Canadaian provinces.</p>
+<p>#g)Repeat the exercise in c), FURTHER assuming that the federal government decides that eqz = 0.5. What is the GDP of each province at the new steady state in this case, and identify the provinces that receive an equalization payment<br>nsimul=100<br>reg=sfcr_baseline(reg_eqs, reg_ext, nsimul)<br>shkeqz=sfcr_shock(<br>  variables=sfcr_set(<br>    mu_ON_AB<del>0.125,<br>    mu_QC_AB</del>0.125,<br>    G_ON<del>35,<br>    G_AB</del>27.5,<br>    G_QC<del>27.5,<br>    rho_eqz</del>0.5<br>  ),<br>  start = 3,<br>  end = 100<br>)<br>reg_shkeqz=sfcr_scenario(baseline=reg,scenario=shkeqz,periods = 100)</p>
+<p>#le PIB de chaque province au nouvel état stationnaire<br>cat(‘Y_AB_eqz=’,reg_shkeqz$Y_AB[nsimul])<br>##Y_AB_eqz= 134.4947<br>cat(‘Y_ON_eqz=’,reg_shkeqz$Y_ON[nsimul])<br>##Y_ON_eqz= 130.5989<br>cat(‘Y_QC_eqz=’,reg_shkeqz$Y_QC[nsimul])<br>##Y_QC_eqz= 122.9741</p>
+<p>#Identify which province will get the equalized payment<br>cat(‘diff_AB_Average=’,reg_shkeqz$Y_AB[nsimul]-(reg_shkeqz$Y[nsimul]/3))<br>##diff_AB_Average= 5.138824<br>cat(‘diff_ON_Average=’,reg_shkeqz$Y_ON[nsimul]-(reg_shkeqz$Y[nsimul]/3))<br>##diff_ON_Average= 1.242993<br>cat(‘diff_QC_Average=’,reg_shkeqz$Y_QC[nsimul]-(reg_shkeqz$Y[nsimul]/3))<br>##diff_QC_Average= -6.381817<br>##Quebec will receive an equalization payment in this case, because its provincal GDP is lower than Canada’s average GDP.</p>
+<p>#h) Compare the provincial GDP to the steady state obtained in g), with an equalization program, to the steady state provincial GDP obtained in c) without an equalization program. Identify the provinces whose GDP increases following the implementation of the equalization program?<br>cat(‘Y_AB difference between g) and c)=’,reg_shkeqz$Y_AB[nsimul]-reg_shkmu$Y_AB[nsimul])<br>#Y_AB difference between g) and c)= 2.939014<br>cat(‘Y_ON difference between g) and c)=’,reg_shkeqz$Y_ON[nsimul]-reg_shkmu$Y_ON[nsimul])<br>#Y_ON difference between g) and c)= 2.351211<br>cat(‘Y_QC difference between g) and c)=’,reg_shkeqz$Y_QC[nsimul]-reg_shkmu$Y_QC[nsimul])<br>#Y_QC difference between g) and c)= 7.997429<br>#The GDP of all three provinces increases following the implementation of the equalization program, but Quebec’s GDP increases the most.</p>
+<p>#i)<br>cat(‘equalization_payment_AB in h)=’,reg_shkeqz$EQZ_AB[nsimul])<br>#equalization_payment_AB in h)= 0<br>cat(‘equalization_payment_ON in h)=’,reg_shkeqz$EQZ_ON[nsimul])<br>#equalization_payment_ON in h)= 0<br>cat(‘equalization_payment_QC in h)=’, reg_shkeqz$EQZ_QC[nsimul])<br>#equalization_payment_QC in h)= 3.190909<br>#It is possible that a province that does not receive an equalization payment still sees its GDP increase. For example, we know that in g) Alberta and Ontario will not receive an equlization payment because their provincial GDP is higher than Canada’s average. However, in h), with an equalization program neither Alberta nor Ontario receive any equalization payment. Alberta’s GDP increases 2.939014 and Ontario’s GDP increases 2.351211. </p>
+<p>#j)Does the equalization program succeed in reducing the gaps between the GDP of each province and the average GDP of the provinces of Canada?<br>cat(‘diff_AB_Average=’,reg_shkmu$Y_AB[nsimul]-(reg_shkmu$Y[nsimul]/3))<br>#diff_AB_Average= 6.629029<br>cat(‘diff_AB_Average_eqz=’,reg_shkeqz$Y_AB[nsimul]-(reg_shkeqz$Y[nsimul]/3))<br>##diff_AB_Average_eqz= 5.138824</p>
+<p>cat(‘diff_ON_Average=’,reg_shkmu$Y_ON[nsimul]-(reg_shkmu$Y[nsimul]/3))<br>#diff_ON_Average= 3.321<br>cat(‘diff_ON_Average_eqz=’,reg_shkeqz$Y_ON[nsimul]-(reg_shkeqz$Y[nsimul]/3))<br>##diff_ON_Average_eqz= 1.242993</p>
+<p>cat(‘diff_QC_Average=’,reg_shkmu$Y_QC[nsimul]-(reg_shkmu$Y[nsimul]/3))<br>#diff_QC_Average= -9.950029<br>cat(‘diff_QC_Average_eqz=’,reg_shkeqz$Y_QC[nsimul]-(reg_shkeqz$Y[nsimul]/3))<br>##diff_QC_Average_eqz= -6.381817<br>#The equalization program succeed in reducing the gaps between the GDP of each province and the average GDP of the provinces of Canada.For example, with an equalization program, Quebec’s GDP is 6.38 lower than the average. But it was 9.95 lower than the average when without the equalization payment.</p>
+<p>Z&lt;-matrix(c(400,0,100,100,275,125,250,180,525),3,3)<br>X&lt;-matrix(c(950,600,1200),3,1)<br>950-(400+0+100)<br>#[1] 450<br>600-(100+275+125)<br>#[1] 100<br>1200-(250+180+525)<br>#[1] 245<br>f&lt;-matrix(c(450,100,245),3,1)</p>
+<p>#b)<br>400+100+250<br>#[1] 750<br>0+275+280<br>#[1] 555<br>100+125+525<br>#[1] 750<br>950-750<br>#[1] 200<br>600-555<br>#[1] 45<br>1200-750<br>#[1] 450<br>print(v&lt;-matrix(c(200,45,450),1,3))<br>#[,1] [,2] [,3]<br>#[1,]  200   45  450</p>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        Author:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://helen058.github.io" rel="external nofollow noreferrer">Helen Huier Ma</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        Link:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://helen058.github.io/2022/01/27/simulating-and-running-an-economic-model-in-r/">https://helen058.github.io/2022/01/27/simulating-and-running-an-economic-model-in-r/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        Reprint policy:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    All articles in this blog are used except for special statements
+                    <a href="https://creativecommons.org/licenses/by-nc/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY-NC 4.0</a>
+                    reprint polocy. If reproduced, please indicate source
+                    <a href="https://helen058.github.io" target="_blank">Helen Huier Ma</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>Copied successfully, please follow the reprint policy of this article</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">more</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/R/">
+                                    <span class="chip bg-color">R</span>
+                                </a>
+                            
+                                <a href="/tags/Econometrics/">
+                                    <span class="chip bg-color">Econometrics</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="far fa-dot-circle"></i>&nbsp;Current
+            </div>
+            <div class="card">
+                <a href="/2022/01/27/simulating-and-running-an-economic-model-in-r/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="Simulating and Running an Economic Model in R">
+                        
+                        <span class="card-title">Simulating and Running an Economic Model in R</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-01-27
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Economics/" class="post-category">
+                                    Economics
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/R/">
+                        <span class="chip bg-color">R</span>
+                    </a>
+                    
+                    <a href="/tags/Econometrics/">
+                        <span class="chip bg-color">Econometrics</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                Next&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2022/01/27/local-traditional-knowledge-in-its-urban-context-a-case-study-of-bai-ethnic-minority-in-dali-china/">
+                    <div class="card-image">
+                        
+                        <img src="https://www.cambridgescholars.com/product/978-1-5275-6871-6/" class="responsive-img" alt="Local Traditional Knowledge in Its Urban Context: A Case Study of Bai Ethnic Minority in Dali, China">
+                        
+                        <span class="card-title">Local Traditional Knowledge in Its Urban Context: A Case Study of Bai Ethnic Minority in Dali, China</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-01-27
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Geography/" class="post-category">
+                                    Geography
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Field-work-in-China/">
+                        <span class="chip bg-color">Field work in China</span>
+                    </a>
+                    
+                    <a href="/tags/Ethnic-minority/">
+                        <span class="chip bg-color">Ethnic minority</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;TOC</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+
+    <div class="container row center-align" style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2021-2022</span>
+            
+            <span id="year">2021</span>
+            <a href="/about" target="_blank">Helenma</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;Total word count:&nbsp;<span
+                class="white-color">199k</span>&nbsp;
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;Total traffic:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;Total number of visitors:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;
+            </span>
+            
+            <br>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+
+
+
+
+
+
+    <a href="https://twitter.com/Helenn_Ma" class="tooltipped" target="_blank" data-tooltip="Find me on Twitter: https://twitter.com/Helenn_Ma" data-position="top" data-delay="50">
+        <i class="fab fa-twitter"></i>
+    </a>
+
+
+
+	<a href="https://www.linkedin.com/in/helen-huier-ma/" class="tooltipped" target="_blank" data-tooltip="Find me on Linkedin: https://www.linkedin.com/in/helen-huier-ma/ data-position="top" data-delay="50">
+		<i class="fab fa-linkedin"></i>
+	</a>
+
+
+
+
+
+
+
+
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;Search</span>
+            <input type="search" id="searchInput" name="s" placeholder="Please enter a search keyword"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(function () {
+        var searchFunc = function (path, search_id, content_id) {
+            'use strict';
+            $.ajax({
+                url: path,
+                dataType: "xml",
+                success: function (xmlResponse) {
+                    // get the contents from search data
+                    var datas = $("entry", xmlResponse).map(function () {
+                        return {
+                            title: $("title", this).text(),
+                            content: $("content", this).text(),
+                            url: $("url", this).text()
+                        };
+                    }).get();
+                    var $input = document.getElementById(search_id);
+                    var $resultContent = document.getElementById(content_id);
+                    $input.addEventListener('input', function () {
+                        var str = '<ul class=\"search-result-list\">';
+                        var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                        $resultContent.innerHTML = "";
+                        if (this.value.trim().length <= 0) {
+                            return;
+                        }
+                        // perform local searching
+                        datas.forEach(function (data) {
+                            var isMatch = true;
+                            var data_title = data.title.trim().toLowerCase();
+                            var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                            var data_url = data.url;
+                            data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                            var index_title = -1;
+                            var index_content = -1;
+                            var first_occur = -1;
+                            // only match artiles with not empty titles and contents
+                            if (data_title !== '' && data_content !== '') {
+                                keywords.forEach(function (keyword, i) {
+                                    index_title = data_title.indexOf(keyword);
+                                    index_content = data_content.indexOf(keyword);
+                                    if (index_title < 0 && index_content < 0) {
+                                        isMatch = false;
+                                    } else {
+                                        if (index_content < 0) {
+                                            index_content = 0;
+                                        }
+                                        if (i === 0) {
+                                            first_occur = index_content;
+                                        }
+                                    }
+                                });
+                            }
+                            // show search results
+                            if (isMatch) {
+                                str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                                var content = data.content.trim().replace(/<[^>]+>/g, "");
+                                if (first_occur >= 0) {
+                                    // cut out 100 characters
+                                    var start = first_occur - 20;
+                                    var end = first_occur + 80;
+                                    if (start < 0) {
+                                        start = 0;
+                                    }
+                                    if (start === 0) {
+                                        end = 100;
+                                    }
+                                    if (end > content.length) {
+                                        end = content.length;
+                                    }
+                                    var match_content = content.substr(start, end);
+                                    // highlight all keywords
+                                    keywords.forEach(function (keyword) {
+                                        var regS = new RegExp(keyword, "gi");
+                                        match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                    });
+
+                                    str += "<p class=\"search-result\">" + match_content + "...</p>"
+                                }
+                                str += "</li>";
+                            }
+                        });
+                        str += "</ul>";
+                        $resultContent.innerHTML = str;
+                    });
+                }
+            });
+        };
+
+        searchFunc('/search.xml', 'searchInput', 'searchResult');
+    });
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+	
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>
